@@ -7,7 +7,8 @@ user { 'becca':
     managehome => true,
     groups     => ['sysadmin', 'cars'],
     shell      => '/bin/bash',
-    password   => '$1$6rSaqCiq$SPCeuTEtOV34oEKlC9UPc' #plain text is my student number
+    password   => '$1$jtzisBQI$G.T/fasLfFtbEMqvCYT2h0', 
+    #plain text is my student number
   }
 
 user { 'fred':
@@ -17,6 +18,8 @@ user { 'fred':
     managehome => true,
     groups     => ['trucks', 'cars', 'wheel'],
     shell      => '/bin/csh',
+    password   => '$1$jtzisBQI$G.T/fasLfFtbEMqvCYT2h0',
+
   }
 
 user { 'wilma':
@@ -26,6 +29,7 @@ user { 'wilma':
     managehome     => true,
     groups         => ['trucks', 'cars', 'ambulances'],
     shell          => '/bin/bash',
+    password   => '$1$jtzisBQI$G.T/fasLfFtbEMqvCYT2h0',
     purge_ssh_keys => true,
   }
 ssh_authorized_key { 'wilmaKey' :
