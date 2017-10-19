@@ -1,4 +1,4 @@
-class user{
+class user {
 require groups
 require packages
 user { 'becca':
@@ -30,9 +30,10 @@ user { 'wilma':
     purge_ssh_keys => true,
   }
 ssh_authorized_key { 'wilmaKey' :
-	ensure => 'present',
-	user   => 'wilma',
-	type   => 'ssh-rsa',
-	key    => 'PuBlIcKeYWilMaAa',
+        ensure => 'present',
+        user   => 'wilma',
+        type   => 'ssh-rsa',
+        key    => 'PuBlIcKeYWilMaAa',
 }
 }
+
