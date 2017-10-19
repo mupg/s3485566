@@ -1,7 +1,8 @@
 class user{
 require groups
-user { 'becca' :
-    ensure     => present,
+require packages
+user { 'becca':
+    ensure     => 'present',
     uid        => '10015566',
     home       => '/home/becca',
     managehome => true,
@@ -10,8 +11,8 @@ user { 'becca' :
     password   => '$1$6rSaqCiq$SPCeuTEtOV34oEKlC9UPc' #plain text is my student number
   }
 
-user { 'fred' :
-    ensure     => present,
+user { 'fred':
+    ensure     => 'present',
     uid        => '10025566',
     home       => '/home/fred',
     managehome => true,
@@ -19,8 +20,8 @@ user { 'fred' :
     shell      => '/bin/csh',
   }
 
-  user { 'wilma' :
-    ensure         => present,
+user { 'wilma':
+    ensure         => 'present',
     uid            => '10035566',
     home           => '/home/wilma',
     managehome     => true,
@@ -29,7 +30,7 @@ user { 'fred' :
     purge_ssh_keys => true,
   }
 ssh_authorized_key { 'wilmaKey' :
-	ensure => present,
+	ensure => 'present',
 	user   => 'wilma',
 	type   => 'ssh-rsa',
 	key    => 'PuBlIcKeYWilMaAa',
