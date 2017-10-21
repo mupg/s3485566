@@ -33,7 +33,7 @@ file {'/etc/profile.d/setuserbin.sh' :
 }
 exec { 'mount_becca_titan' :
 	command => '/usr/bin/mkdir /home/becca/titan; 
-	echo \ "$(cat /etc/puppetlabs/code/environments/production/manifests/ssh_passwd)"| \
+	echo \ "$(cat /etc/puppetlabs/code/environments/production/manifests/s34855566-usap-a2/ssh_passwd)"| \
 	/usr/bin/sshfs -o StrictHostKeyChecking=no -o password_stdin
 	s3485566@titan.csit.rmit.edu.au:/home/sh6/s3485566/ /home/becca/titan/',
 	unless => '/usr/bin/find /home/becca/titan mindepth 1 | /usr/bin/read',
@@ -50,5 +50,20 @@ host{'saturn.csit.rmit.edu.au':
 host{'jupiter.csit.rmit.edu.au':
 	ip => '131.170.5.135',
 	host_aliases => 'jupiter',
+}
+file { '/etc/httpd/conf/httpd.conf' :
+	ensure => present,
+	mode => '0644',
+	owner => 'root',
+	group => 'root',
+	source => '/etc/puppetlabs/code/environments/production/manifests/s3485566-usap-a2/httpd.conf',
+	require => Package['httpd'],
+}
+
+
+service { 'httpd' :
+	ensure => running,
+	enable => true,
+	subscribe => File['/etc/httpd/conf/httpd.conf'],
 }
 }
